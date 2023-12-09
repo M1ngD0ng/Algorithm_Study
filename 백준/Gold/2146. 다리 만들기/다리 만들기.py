@@ -57,7 +57,7 @@ def bfs(x,y):
         q.append((nx,ny))
       visited[nx][ny]=True 
 
-  ans=[]
+  ans=[] # 빈 배열일 수도 있는데 min 함수 사용해서 ValueError 떴었음
   for tx,ty in tempQ:
     ans.append(miniBfs(tx,ty)) 
   if not ans:
