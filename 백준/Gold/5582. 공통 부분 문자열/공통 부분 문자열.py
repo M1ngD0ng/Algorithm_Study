@@ -13,8 +13,6 @@ for i in range(1,N+1):
   for j in range(1,M+1):
     if A[i-1]==B[j-1]:
       dp[i][j]=dp[i-1][j-1]+1
-      
-for i in range(1,N+1):
-  ans=max(ans,max(dp[i]))
+      ans=max(ans,dp[i][j])
 
 print(ans)
