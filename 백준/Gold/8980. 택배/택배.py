@@ -6,7 +6,7 @@ M=int(sys.stdin.readline())
 
 A=[list(map(int,sys.stdin.readline().split())) for _ in range(M)]
 
-A.sort(key=lambda x:(x[1]-x[0],-x[2]))
+A.sort(key=lambda x:(x[1]))
 dp=[0]*(N+1)
 
 ans=0
