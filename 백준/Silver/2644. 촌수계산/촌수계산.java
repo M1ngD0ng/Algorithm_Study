@@ -36,35 +36,26 @@ public class Main {
             parent.get(B).add(A);
             child.get(A).add(B);
         }
-        dfsToParent(X, 0);
-        dfsToChild(X, 0);
+        dfs(X, 0);
         if(ans==Integer.MAX_VALUE) bw.write(String.valueOf(-1));
         else bw.write(String.valueOf(ans));
         bw.flush();
     }
 
-    public static void dfsToParent(int node, int cnt) {
+    public static void dfs(int node, int cnt) {
         if (node == Y) {
             ans = Math.min(ans, cnt);
         }
         for (int nextNode : parent.get(node)) {
             if (visited[nextNode]) continue;
             visited[nextNode] = true;
-            dfsToParent(nextNode, cnt+1);
-            dfsToChild(nextNode, cnt+1);
-        }
-    }
-
-    public static void dfsToChild(int node, int cnt) {
-        if (node == Y) {
-            ans = Math.min(ans, cnt);
+            dfs(nextNode, cnt+1);
         }
         for (int nextNode : child.get(node)) {
             if (visited[nextNode]) continue;
             visited[nextNode] = true;
-            dfsToParent(nextNode, cnt+1);
-            dfsToChild(nextNode, cnt+1);
+            dfs(nextNode, cnt+1);
         }
-
     }
+
 }
