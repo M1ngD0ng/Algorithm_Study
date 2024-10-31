@@ -1,26 +1,15 @@
 
-import java.sql.Array;
 import java.util.*;
 import java.io.*;
 
 public class Main {
-    static class Point implements Comparable<Point>{
+    static class Point{
         int x;
         int y;
 
         Point(int x, int y){
             this.x=x;
             this.y=y;
-        }
-        @Override
-        public int compareTo(Point p){
-            if(this.x>p.x) return 1;
-            else if(this.x<p.x) return -1;
-            else{
-                if(this.y>p.y) return 1;
-                else if(this.y<p.y) return -1;
-                else return 0;
-            }
         }
     }
 
@@ -39,7 +28,10 @@ public class Main {
             arr.add(new Point(A,B));
 
         }
-        Collections.sort(arr);
+        arr.sort((a,b)-> {
+            if(a.x==b.x) return Integer.compare(a.y, b.y);
+            else return Integer.compare(a.x, b.x);
+        });
 
         for(Point p: arr){
             System.out.println(p.x+" "+p.y);
